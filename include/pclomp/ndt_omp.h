@@ -41,7 +41,7 @@
 #ifndef PCL_REGISTRATION_NDT_OMP_H_
 #define PCL_REGISTRATION_NDT_OMP_H_
 
-#include <pcl/registration/registration.h>
+#include <pcl/registration/ndt.h>
 #include <pcl/search/impl/search.hpp>
 #include "voxel_grid_covariance_omp.h"
 
@@ -68,15 +68,15 @@ namespace pclomp
 	  * \author Brian Okorn (Space and Naval Warfare Systems Center Pacific)
 	  */
 	template<typename PointSource, typename PointTarget>
-	class NormalDistributionsTransform : public pcl::Registration<PointSource, PointTarget>
+	class NormalDistributionsTransform : public pcl::NormalDistributionsTransform<PointSource, PointTarget>
 	{
 	protected:
 
-		typedef typename pcl::Registration<PointSource, PointTarget>::PointCloudSource PointCloudSource;
+		typedef typename pcl::NormalDistributionsTransform<PointSource, PointTarget>::PointCloudSource PointCloudSource;
 		typedef typename PointCloudSource::Ptr PointCloudSourcePtr;
 		typedef typename PointCloudSource::ConstPtr PointCloudSourceConstPtr;
 
-		typedef typename pcl::Registration<PointSource, PointTarget>::PointCloudTarget PointCloudTarget;
+		typedef typename pcl::NormalDistributionsTransform<PointSource, PointTarget>::PointCloudTarget PointCloudTarget;
 		typedef typename PointCloudTarget::Ptr PointCloudTargetPtr;
 		typedef typename PointCloudTarget::ConstPtr PointCloudTargetConstPtr;
 
@@ -122,7 +122,7 @@ namespace pclomp
 		inline void
 			setInputTarget(const PointCloudTargetConstPtr &cloud)
 		{
-			pcl::Registration<PointSource, PointTarget>::setInputTarget(cloud);
+			pcl::NormalDistributionsTransform<PointSource, PointTarget>::setInputTarget(cloud);
 			init();
 		}
 
@@ -239,22 +239,22 @@ namespace pclomp
 
 	protected:
 
-		using pcl::Registration<PointSource, PointTarget>::reg_name_;
-		using pcl::Registration<PointSource, PointTarget>::getClassName;
-		using pcl::Registration<PointSource, PointTarget>::input_;
-		using pcl::Registration<PointSource, PointTarget>::indices_;
-		using pcl::Registration<PointSource, PointTarget>::target_;
-		using pcl::Registration<PointSource, PointTarget>::nr_iterations_;
-		using pcl::Registration<PointSource, PointTarget>::max_iterations_;
-		using pcl::Registration<PointSource, PointTarget>::previous_transformation_;
-		using pcl::Registration<PointSource, PointTarget>::final_transformation_;
-		using pcl::Registration<PointSource, PointTarget>::transformation_;
-		using pcl::Registration<PointSource, PointTarget>::transformation_epsilon_;
-		using pcl::Registration<PointSource, PointTarget>::converged_;
-		using pcl::Registration<PointSource, PointTarget>::corr_dist_threshold_;
-		using pcl::Registration<PointSource, PointTarget>::inlier_threshold_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::reg_name_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::getClassName;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::input_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::indices_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::target_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::nr_iterations_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::max_iterations_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::previous_transformation_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::final_transformation_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::transformation_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::transformation_epsilon_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::converged_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::corr_dist_threshold_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::inlier_threshold_;
 
-		using pcl::Registration<PointSource, PointTarget>::update_visualizer_;
+		using pcl::NormalDistributionsTransform<PointSource, PointTarget>::update_visualizer_;
 
 		/** \brief Estimate the transformation and returns the transformed source (input) as output.
 		  * \param[out] output the resultant input transformed point cloud dataset
